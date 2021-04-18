@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.jue.meet">
+
+    <application
+        android:name="com.jue.meet.base.BaseApp"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
+
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup">
+
+        <!--渠道 ${APP_CHANNEL_VALUE} -->
+        <meta-data
+            android:name="APP_CHANNEL"
+            android:value="${APP_CHANNEL_VALUE}" />
+
+        <!--高德地图-->
+<!--        old:abde3c5f58d7dd9a762019906cef613e-->
+<!--        cur：ecab641005331ead80c37e39f65646c5-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="ecab641005331ead80c37e39f65646c5" />
+
+        <!--Bmob-->
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.jue.meet.BmobContentProvider" />
+
+        <!--OPPO-->
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.2" />
+
+        <!--小米适配-->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
+        <!--引导页-->
+        <activity
+            android:name="com.jue.meet.ui.IndexActivity"
+            android:theme="@style/AppThemeFull">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--引导-->
+        <activity
+            android:name="com.jue.meet.ui.GuideActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppThemeFull" />
+
+        <!--登录-->
+        <activity
+            android:name="com.jue.meet.ui.LoginActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity android:name="com.jue.meet.ui.TestLoginActivity" />
+
+        <!--主页-->
+        <activity
+            android:name="com.jue.meet.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!--上传头像-->
+        <activity
+            android:name="com.jue.meet.ui.FirstUploadActivity"
+            android:label="@string/text_upload_title"
+            android:launchMode="singleTask" />
+
+        <!--添加好友-->
+        <activity
+            android:name="com.jue.meet.ui.AddFriendActivity"
+            android:label="@string/text_user_add_friend"
+            android:launchMode="singleTask" />
+
+        <!--从通讯录导入-->
+        <activity
+            android:name="com.jue.meet.ui.ContactFirendActivity"
+            android:label="@string/text_add_friend_contact"
+            android:launchMode="singleTask" />
+
+        <!--用户信息-->
+        <activity
+            android:name="com.jue.meet.ui.UserInfoActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!--个人信息-->
+        <activity
+            android:name="com.jue.meet.ui.MeInfoActivity"
+            android:label="@string/text_me_item_title_1"
+            android:launchMode="singleTask" />
+
+        <!--通知-->
+
+        <!--新朋友-->
+        <activity
+            android:name="com.jue.meet.ui.NewFriendActivity"
+            android:label="@string/text_me_item_title_3"
+            android:launchMode="singleTask" />
+
+        <!--聊天-->
+        <activity
+            android:name="com.jue.meet.ui.ChatActivity"
+            android:launchMode="singleTask" />
+
+        <!--聊天信息-->
+        <activity
+            android:name="com.jue.meet.ui.ChatInfoActivity"
+            android:launchMode="singleTask" />
+
+        <!--图片预览-->
+        <activity
+            android:name="com.jue.meet.ui.ImagePreviewActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!--位置-->
+        <activity
+            android:name="com.jue.meet.ui.LocationActivity"
+            android:launchMode="singleTask" />
+
+        <!--设置-->
+        <activity
+            android:name="com.jue.meet.ui.SettingActivity"
+            android:launchMode="singleTask" />
+
+        <!--二维码-->
+        <activity
+            android:name="com.jue.meet.ui.QrCodeActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!--分享-->
+        <activity
+            android:name="com.jue.meet.ui.ShareImgActivity"
+            android:launchMode="singleTask" />
+
+        <!--隐私设置-->
+        <activity
+            android:name="com.jue.meet.ui.PrivateSetActivity"
+            android:launchMode="singleTask" />
+
+        <!--发朋友圈-->
+        <activity
+            android:name="com.jue.meet.ui.PushSquareActivity"
+            android:label="@string/text_square_psuh"
+            android:launchMode="singleTask" />
+
+        <!--主题-->
+        <activity
+            android:name="com.jue.meet.ui.ChatThemeActivity"
+            android:label="主题"
+            android:launchMode="singleTask" />
+
+        <!--android:process=":ipc"-->
+        <!--云服务-->
+        <service
+            android:name="com.jue.meet.service.CloudService"
+            android:exported="true" />
+
+        <!--FileProvide-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.jue.meet.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <!--融云的离线消息，通过广播接收器来处理融云的离线消息-->
+        <receiver
+            android:name="com.jue.meet.receiver.SealNotificationReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="io.rong.push.intent.MESSAGE_ARRIVED" />
+                <action android:name="io.rong.push.intent.MESSAGE_CLICKED" />
+                <action android:name="io.rong.push.intent.THIRD_PARTY_PUSH_STATE" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

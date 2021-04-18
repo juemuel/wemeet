@@ -1,0 +1,598 @@
+@startuml
+
+title __UI's Class Diagram__\n
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.AddFriendActivity {
+          {static} + TYPE_CONTENT : int
+          {static} + TYPE_TITLE : int
+          - et_phone : EditText
+          - include_empty_view : View
+          - iv_search : ImageView
+          - ll_to_contact : LinearLayout
+          - mList : List<AddFriendModel>
+          - mSearchResultView : RecyclerView
+          + onClick()
+          # onCreate()
+          - addContent()
+          - addTitle()
+          - initView()
+          - pushUser()
+          - queryPhoneUser()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.ChatActivity {
+          {static} + TYPE_CHAT_TIME : int
+          {static} + TYPE_LEFT_IMAGE : int
+          {static} + TYPE_LEFT_LOCATION : int
+          {static} + TYPE_LEFT_TEXT : int
+          {static} + TYPE_RIGHT_IMAGE : int
+          {static} + TYPE_RIGHT_LOCATION : int
+          {static} + TYPE_RIGHT_TEXT : int
+          {static} - CHAT_INFO_REQUEST_CODE : int
+          {static} - LOCATION_REQUEST_CODE : int
+          - btn_send_msg : Button
+          - et_input_msg : EditText
+          - ll_camera : LinearLayout
+          - ll_chat_bg : LinearLayout
+          - ll_location : LinearLayout
+          - ll_pic : LinearLayout
+          - ll_voice : LinearLayout
+          - mChatAdapter : CommonAdapter<ChatModel>
+          - mChatView : RecyclerView
+          - mList : List<ChatModel>
+          - meUserPhoto : String
+          - uploadFile : File
+          - yourUserId : String
+          - yourUserName : String
+          - yourUserPhoto : String
+          + onClick()
+          + onCreateOptionsMenu()
+          + onMessageEvent()
+          + onOptionsItemSelected()
+          {static} + startActivity()
+          # onActivityResult()
+          # onCreate()
+          - addImage()
+          - addImage()
+          - addLocation()
+          - addText()
+          - addTimeItem()
+          - baseAddItem()
+          - initView()
+          - loadMeInfo()
+          - parsingListMessage()
+          - queryMessage()
+          - queryRemoteMessage()
+          - updateChatTheme()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.ChatInfoActivity {
+          - btn_delete : Button
+          - iv_photo : CircleImageView
+          - objectId : String
+          - tvText : TextView
+          - tv_cancel : TextView
+          - tv_confirm : TextView
+          - tv_name : TextView
+          - tv_phone : TextView
+          + onClick()
+          {static} + startChatInfo()
+          # onCreate()
+          - initDeleteDialog()
+          - initView()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.ChatThemeActivity {
+          - mThemeAdapter : CommonAdapter<Integer>
+          - mThemeList : List<Integer>
+          - mThemeView : RecyclerView
+          # onCreate()
+          - initView()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.ContactFirendActivity {
+          - disposable : Disposable
+          - mContactAdapter : CommonAdapter<AddFriendModel>
+          - mContactMap : Map<String, String>
+          - mContactView : RecyclerView
+          - mList : List<AddFriendModel>
+          + onBackPressed()
+          # onCreate()
+          # onDestroy()
+          - addContent()
+          - disposable()
+          - fixprivateSets()
+          - initView()
+          - loadContact()
+          - loadUser()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.FirstUploadActivity {
+          - btn_upload : Button
+          - et_nickname : EditText
+          - iv_photo : CircleImageView
+          - tv_ablum : TextView
+          - tv_camera : TextView
+          - tv_cancel : TextView
+          - uploadFile : File
+          + onClick()
+          {static} + startActivity()
+          # onActivityResult()
+          # onCreate()
+          - initPhotoView()
+          - initView()
+          - uploadPhoto()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.GuideActivity {
+          - iv_guide_night : ImageView
+          - iv_guide_point_1 : ImageView
+          - iv_guide_point_2 : ImageView
+          - iv_guide_point_3 : ImageView
+          - iv_guide_smile : ImageView
+          - iv_guide_star : ImageView
+          - iv_music_switch : ImageView
+          - mAnim : ObjectAnimator
+          - mPageList : List<View>
+          - mViewPager : ViewPager
+          - tv_guide_skip : TextView
+          - view1 : View
+          - view2 : View
+          - view3 : View
+          + onClick()
+          # onCreate()
+          # onDestroy()
+          - initView()
+          - seletePoint()
+          - startMusic()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.ImagePreviewActivity {
+          - iv_back : ImageView
+          - photo_view : PhotoView
+          - tv_download : TextView
+          - url : String
+          + onClick()
+          {static} + startActivity()
+          # onCreate()
+          - initView()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.IndexActivity {
+          {static} - SKIP_MAIN : int
+          - mHandler : Handler
+          + onBackPressed()
+          # onCreate()
+          - startMain()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.LocationActivity {
+          - IAddress : String
+          - ILa : double
+          - ILo : double
+          - ITEM : int
+          - aMap : AMap
+          - et_search : EditText
+          - isShow : boolean
+          - iv_poi : ImageView
+          - mConstellationnView : RecyclerView
+          - mList : List<PoiItem>
+          - mMapView : MapView
+          - mPoiListAdapter : CommonAdapter<PoiItem>
+          - poiSearch : PoiSearch
+          - query : Query
+          - tv_cancel : TextView
+          + onClick()
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+          + onPoiItemSearched()
+          + onPoiSearched()
+          {static} + startActivity()
+          # onCreate()
+          # onDestroy()
+          # onPause()
+          # onResume()
+          # onSaveInstanceState()
+          - initPoiView()
+          - initView()
+          - poiSearch()
+          - updatePoi()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.LoginActivity {
+          {static} - H_TIME : int
+          {static} - TIME : int
+          - btn_login : Button
+          - btn_send_code : Button
+          - et_code : EditText
+          - et_phone : EditText
+          - mHandler : Handler
+          - tv_test_login : TextView
+          + onClick()
+          # onCreate()
+          - initDialogView()
+          - initView()
+          - login()
+          - sendSMS()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.MeInfoActivity {
+          - et_nickname : EditText
+          - et_user_desc : EditText
+          - iv_user_photo : CircleImageView
+          - ll_photo : RelativeLayout
+          - ll_user_age : LinearLayout
+          - ll_user_birthday : LinearLayout
+          - ll_user_constellation : LinearLayout
+          - ll_user_hobby : LinearLayout
+          - ll_user_sex : LinearLayout
+          - ll_user_status : LinearLayout
+          - mAgeAdapter : CommonAdapter<Integer>
+          - mAgeList : List<Integer>
+          - mAgeView : RecyclerView
+          - mConstellationAdapter : CommonAdapter<String>
+          - mConstellationList : List<String>
+          - mConstellationnView : RecyclerView
+          - mDatePicker : DatePicker
+          - mHobbyAdapter : CommonAdapter<String>
+          - mHobbyList : List<String>
+          - mHobbyView : RecyclerView
+          - mStatusAdapter : CommonAdapter<String>
+          - mStatusList : List<String>
+          - mStatusView : RecyclerView
+          - tv_ablum : TextView
+          - tv_age_cancel : TextView
+          - tv_boy : TextView
+          - tv_camera : TextView
+          - tv_constellation_cancel : TextView
+          - tv_girl : TextView
+          - tv_hobby_cancel : TextView
+          - tv_photo_cancel : TextView
+          - tv_sex_cancel : TextView
+          - tv_status_cancel : TextView
+          - tv_user_age : TextView
+          - tv_user_birthday : TextView
+          - tv_user_constellation : TextView
+          - tv_user_hobby : TextView
+          - tv_user_sex : TextView
+          - tv_user_status : TextView
+          - uploadPhotoFile : File
+          + onClick()
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+          # onActivityResult()
+          # onCreate()
+          - initAgeDialog()
+          - initBirthdayDialog()
+          - initConstellationDialog()
+          - initHobbyDialog()
+          - initPhotoDialog()
+          - initSexDialog()
+          - initStatusDialog()
+          - initView()
+          - loadUserInfo()
+          - updateUser()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.NewFriendActivity {
+          - disposable : Disposable
+          - item_empty_view : ViewStub
+          - mList : List<NewFriend>
+          - mNewFriendAdapter : CommonAdapter<NewFriend>
+          - mNewFriendView : RecyclerView
+          - mUserList : List<IMUser>
+          # onCreate()
+          # onDestroy()
+          - initView()
+          - queryNewFriend()
+          - showViewStub()
+          - updateItem()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.PrivateSetActivity {
+          - currentId : String
+          - isCheck : boolean
+          - sw_kill_contact : Switch
+          + onClick()
+          # onCreate()
+          - addPrivateSet()
+          - delPrivateSet()
+          - initView()
+          - queryPrivateSet()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.PushSquareActivity {
+          - MediaType : int
+          - et_content : EditText
+          - iv_error : ImageView
+          - ll_ablum : LinearLayout
+          - ll_camera : LinearLayout
+          - ll_media : LinearLayout
+          - ll_media_type : LinearLayout
+          - ll_music : LinearLayout
+          - ll_video : LinearLayout
+          - tv_content_size : TextView
+          - tv_media_path : TextView
+          - uploadFile : File
+          + onClick()
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+          # onActivityResult()
+          # onCreate()
+          - initView()
+          - inputSquare()
+          - push()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.QrCodeActivity {
+          {static} - REQUEST_IMAGE : int
+          - analyzeCallback : AnalyzeCallback
+          - isOpenLight : boolean
+          - iv_back : ImageView
+          - iv_flashlight : ImageView
+          - iv_to_ablum : TextView
+          + onClick()
+          # onActivityResult()
+          # onCreate()
+          - initQrCode()
+          - initView()
+          - openAblum()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.SettingActivity {
+          - btn_logout : Button
+          - isTips : boolean
+          - rl_app_show : RelativeLayout
+          - rl_app_tips : RelativeLayout
+          - rl_chat_theme : RelativeLayout
+          - rl_check_permissions : RelativeLayout
+          - rl_check_version : RelativeLayout
+          - rl_clear_cache : RelativeLayout
+          - rl_update_languaue : RelativeLayout
+          - sw_app_tips : Switch
+          - tv_app_version : TextView
+          - tv_cache_size : TextView
+          - tv_cancel : TextView
+          - tv_current_languaue : TextView
+          - tv_en : TextView
+          - tv_new_version : TextView
+          - tv_zh : TextView
+          + onClick()
+          + onOptionsItemSelected()
+          # onCreate()
+          - initLanguaueDialog()
+          - initView()
+          - logout()
+          - openWindow()
+          - selectLanguaue()
+          - updateApp()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.ShareImgActivity {
+          - iv_photo : ImageView
+          - iv_qrcode : ImageView
+          - ll_content : LinearLayout
+          - ll_download : LinearLayout
+          - tv_age : TextView
+          - tv_desc : TextView
+          - tv_name : TextView
+          - tv_phone : TextView
+          - tv_sex : TextView
+          + onClick()
+          # onCreate()
+          - createQRCode()
+          - initView()
+          - loadInfo()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.TestLoginActivity {
+          - btn_login : Button
+          - et_password : EditText
+          - et_phone : EditText
+          + onClick()
+          # onCreate()
+          - initView()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace ui {
+      class com.jue.meet.ui.UserInfoActivity {
+          - btn_add_friend : Button
+          - btn_audio_chat : Button
+          - btn_chat : Button
+          - btn_video_chat : Button
+          - et_msg : EditText
+          - iv_user_photo : CircleImageView
+          - ll_back : RelativeLayout
+          - ll_is_friend : LinearLayout
+          - mColor : int[]
+          - mUserInfoAdapter : CommonAdapter<UserInfoModel>
+          - mUserInfoList : List<UserInfoModel>
+          - mUserInfoView : RecyclerView
+          - tv_add_friend : TextView
+          - tv_cancel : TextView
+          - tv_desc : TextView
+          - tv_nickname : TextView
+          - userId : String
+          + onClick()
+          {static} + startActivity()
+          # onCreate()
+          - addUserInfoModel()
+          - initAddFriendDialog()
+          - initView()
+          - queryUserInfo()
+          - updateUserInfo()
+      }
+    }
+  }
+  
+
+  com.jue.meet.ui.AddFriendActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.AddFriendActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.AddFriendActivity o-- com.jue.framework.adapter.CommonAdapter : mAddFriendAdapter
+  com.jue.meet.ui.ChatActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.ChatActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.ChatInfoActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.ChatInfoActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.ChatInfoActivity o-- com.jue.framework.view.DialogView : mDeleteDialog
+  com.jue.meet.ui.ChatThemeActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.ContactFirendActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.FirstUploadActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.FirstUploadActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.FirstUploadActivity o-- com.jue.framework.view.LodingView : mLodingView
+  com.jue.meet.ui.FirstUploadActivity o-- com.jue.framework.view.DialogView : mPhotoSelectView
+  com.jue.meet.ui.GuideActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.GuideActivity -up-|> com.jue.framework.base.BaseUIActivity
+  com.jue.meet.ui.GuideActivity o-- com.jue.framework.manager.MediaPlayerManager : mGuideMusic
+  com.jue.meet.ui.GuideActivity o-- com.jue.framework.base.BasePageAdapter : mPageAdapter
+  com.jue.meet.ui.ImagePreviewActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.ImagePreviewActivity -up-|> com.jue.framework.base.BaseUIActivity
+  com.jue.meet.ui.IndexActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.jue.meet.ui.LocationActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.LocationActivity .up.|> com.amap.api.services.poisearch.PoiSearch.OnPoiSearchListener
+  com.jue.meet.ui.LocationActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.LocationActivity o-- com.jue.framework.view.LodingView : mLodingView
+  com.jue.meet.ui.LocationActivity o-- com.jue.framework.view.DialogView : mPoiView
+  com.jue.meet.ui.LoginActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.LoginActivity -up-|> com.jue.framework.base.BaseUIActivity
+  com.jue.meet.ui.LoginActivity o-- com.jue.framework.view.DialogView : mCodeView
+  com.jue.meet.ui.LoginActivity o-- com.jue.framework.view.LodingView : mLodingView
+  com.jue.meet.ui.LoginActivity o-- com.jue.framework.view.TouchPictureV : mPictureV
+  com.jue.meet.ui.MeInfoActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.MeInfoActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.MeInfoActivity o-- com.jue.framework.view.DialogView : mAgeDialog
+  com.jue.meet.ui.MeInfoActivity o-- com.jue.framework.view.DialogView : mBirthdayDialog
+  com.jue.meet.ui.MeInfoActivity o-- com.jue.framework.view.DialogView : mConstellationDialog
+  com.jue.meet.ui.MeInfoActivity o-- com.jue.framework.view.DialogView : mHobbyDialog
+  com.jue.meet.ui.MeInfoActivity o-- com.jue.framework.view.LodingView : mLodingView
+  com.jue.meet.ui.MeInfoActivity o-- com.jue.framework.view.DialogView : mPhotoDialog
+  com.jue.meet.ui.MeInfoActivity o-- com.jue.framework.view.DialogView : mSexDialog
+  com.jue.meet.ui.MeInfoActivity o-- com.jue.framework.view.DialogView : mStatusDialog
+  com.jue.meet.ui.NewFriendActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.NewFriendActivity o-- com.jue.framework.bmob.IMUser : imUser
+  com.jue.meet.ui.PrivateSetActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.PrivateSetActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.PrivateSetActivity o-- com.jue.framework.view.LodingView : mLodingView
+  com.jue.meet.ui.PushSquareActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.PushSquareActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.PushSquareActivity o-- com.jue.framework.view.LodingView : mLodingView
+  com.jue.meet.ui.QrCodeActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.QrCodeActivity -up-|> com.jue.framework.base.BaseUIActivity
+  com.jue.meet.ui.SettingActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.SettingActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.SettingActivity o-- com.jue.framework.view.DialogView : mLanguaueDialog
+  com.jue.meet.ui.SettingActivity o-- com.jue.framework.helper.UpdateHelper : mUpdateHelper
+  com.jue.meet.ui.ShareImgActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.ShareImgActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.ShareImgActivity o-- com.jue.framework.view.LodingView : mLodingView
+  com.jue.meet.ui.TestLoginActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.TestLoginActivity -up-|> com.jue.framework.base.BaseBackActivity
+  com.jue.meet.ui.UserInfoActivity .up.|> android.view.View.OnClickListener
+  com.jue.meet.ui.UserInfoActivity -up-|> com.jue.framework.base.BaseUIActivity
+  com.jue.meet.ui.UserInfoActivity o-- com.jue.framework.bmob.IMUser : imUser
+  com.jue.meet.ui.UserInfoActivity o-- com.jue.framework.view.DialogView : mAddFriendDialogView
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

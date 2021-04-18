@@ -1,0 +1,185 @@
+@startuml
+
+title __MANAGER's Class Diagram__\n
+
+  namespace com.jue.framework {
+    namespace manager {
+      class com.jue.framework.manager.DialogManager {
+          {static} - mInstance : DialogManager
+          {static} + getInstance()
+          + hide()
+          + initView()
+          + initView()
+          + show()
+          - DialogManager()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace manager {
+      class com.jue.framework.manager.HttpManager {
+          {static} - mInstnce : HttpManager
+          - mOkHttpClient : OkHttpClient
+          + download()
+          {static} + getInstance()
+          + postCloudToken()
+          - HttpManager()
+          - getNameFromUrl()
+          - isExistDir()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace manager {
+      interface com.jue.framework.manager.HttpManager.OnDownloadListener {
+          {abstract} + onDownloadFailed()
+          {abstract} + onDownloadSuccess()
+          {abstract} + onDownloading()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace manager {
+      class com.jue.framework.manager.KeyWordManager {
+          - imm : InputMethodManager
+          - mContext : Context
+          {static} - mInstance : KeyWordManager
+          {static} + getInstance()
+          + hideKeyWord()
+          + initManager()
+          - KeyWordManager()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace manager {
+      class com.jue.framework.manager.MapManager {
+          - geocodeSearch : GeocodeSearch
+          {static} - mInstance : MapManager
+          - searchListener : OnGeocodeSearchListener
+          + address2poi()
+          {static} + getInstance()
+          + getMapUrl()
+          + initMap()
+          + poi2address()
+          - MapManager()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace manager {
+      interface com.jue.framework.manager.MapManager.OnAddress2PoiGeocodeListener {
+          {abstract} + address2poi()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace manager {
+      interface com.jue.framework.manager.MapManager.OnPoi2AddressGeocodeListener {
+          {abstract} + poi2address()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace manager {
+      class com.jue.framework.manager.MediaPlayerManager {
+          + MEDIA_STATUS : int
+          {static} + MEDIA_STATUS_PAUSE : int
+          {static} + MEDIA_STATUS_PLAY : int
+          {static} + MEDIA_STATUS_STOP : int
+          {static} - H_PROGRESS : int
+          - mHandler : Handler
+          - mMediaPlayer : MediaPlayer
+          + MediaPlayerManager()
+          + continuePlay()
+          + getCurrentPosition()
+          + getDuration()
+          + isPlaying()
+          + pausePlay()
+          + removeHandler()
+          + seekTo()
+          + setLooping()
+          + setOnComplteionListener()
+          + setOnErrorListener()
+          + setOnProgressListener()
+          + startPlay()
+          + startPlay()
+          + stopPlay()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace manager {
+      interface com.jue.framework.manager.MediaPlayerManager.OnMusicProgressListener {
+          {abstract} + OnProgress()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace manager {
+      class com.jue.framework.manager.ThreadPoolManager {
+          {static} - THREAD_CORE_SIZE : int
+          {static} - mInstnce : ThreadPoolManager
+          - serviceCache : ExecutorService
+          - serviceFix : ExecutorService
+          - serviceSchedule : ScheduledExecutorService
+          - serviceSingle : ExecutorService
+          + executeCached()
+          + executeFix()
+          + executeScheduled()
+          + executeSingle()
+          {static} + getInstance()
+          - ThreadPoolManager()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace manager {
+      class com.jue.framework.manager.VoiceManager {
+          - mIatDialog : RecognizerDialog
+          {static} - mInstance : VoiceManager
+          {static} + getInstance()
+          + startSpeak()
+          - VoiceManager()
+      }
+    }
+  }
+  
+
+  com.jue.framework.manager.HttpManager +-down- com.jue.framework.manager.HttpManager.OnDownloadListener
+  com.jue.framework.manager.MapManager o-- com.jue.framework.manager.MapManager.OnAddress2PoiGeocodeListener : address2poi
+  com.jue.framework.manager.MapManager o-- com.jue.framework.manager.MapManager.OnPoi2AddressGeocodeListener : poi2address
+  com.jue.framework.manager.MapManager +-down- com.jue.framework.manager.MapManager.OnAddress2PoiGeocodeListener
+  com.jue.framework.manager.MapManager +-down- com.jue.framework.manager.MapManager.OnPoi2AddressGeocodeListener
+  com.jue.framework.manager.MediaPlayerManager o-- com.jue.framework.manager.MediaPlayerManager.OnMusicProgressListener : musicProgressListener
+  com.jue.framework.manager.MediaPlayerManager +-down- com.jue.framework.manager.MediaPlayerManager.OnMusicProgressListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

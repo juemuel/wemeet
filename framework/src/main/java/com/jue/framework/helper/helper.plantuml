@@ -1,0 +1,219 @@
+@startuml
+
+title __HELPER's Class Diagram__\n
+
+  namespace com.jue.framework {
+    namespace helper {
+      class com.jue.framework.helper.ActivityHelper {
+          {static} - hashSet : HashSet<Activity>
+          {static} - instance : ActivityHelper
+          + addActivity()
+          + exit()
+          {static} + getInstance()
+          - ActivityHelper()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      class com.jue.framework.helper.FileHelper {
+          {static} + ALBUM_REQUEST_CODE : int
+          {static} + CAMEAR_REQUEST_CODE : int
+          {static} + CAMERA_CROP_RESULT : int
+          {static} + MUSIC_REQUEST_CODE : int
+          {static} + VIDEO_REQUEST_CODE : int
+          - cropPath : String
+          - imageUri : Uri
+          {static} - mInstnce : FileHelper
+          - simpleDateFormat : SimpleDateFormat
+          - tempFile : File
+          + getCropPath()
+          {static} + getInstance()
+          + getNetVideoBitmap()
+          + getRealPathFromURI()
+          + getTempFile()
+          + saveBitmapToAlbum()
+          + saveFile()
+          + saveFile()
+          + startPhotoZoom()
+          + toAlbum()
+          + toCamera()
+          + toMusic()
+          + toVideo()
+          - FileHelper()
+          - bitmapToBytes()
+          - saveFile()
+          - updateAlnum()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      class com.jue.framework.helper.FlavorHelper {
+          {static} + getFlavor()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      class com.jue.framework.helper.GlideHelper {
+          {static} + loadFile()
+          {static} + loadSmollUrl()
+          {static} + loadUrl()
+          {static} + loadUrlToBitmap()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      interface com.jue.framework.helper.GlideHelper.OnGlideBitmapResultListener {
+          {abstract} + onResourceReady()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      class com.jue.framework.helper.NotificationHelper {
+          {static} + CHANNEL_ADD_FRIEND : String
+          {static} + CHANNEL_AGREED_FRIEND : String
+          {static} + CHANNEL_MESSAGE : String
+          - mContext : Context
+          - mIdList : List<String>
+          {static} - mInstance : NotificationHelper
+          - notificationManager : NotificationManager
+          + createChannel()
+          {static} + getInstance()
+          + pushAddFriendNotification()
+          + pushArgeedFriendNotification()
+          + pushMessageNotification()
+          - NotificationHelper()
+          - createNotificationChannel()
+          - pushNotification()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      class com.jue.framework.helper.PairFriendHelper {
+          {static} - DELAY_TIME : int
+          - FateNumber : int
+          - mDisposable : Disposable
+          {static} - mInstance : PairFriendHelper
+          - mRandom : Random
+          - meUserId : String
+          + disposable()
+          {static} + getInstance()
+          + pairUser()
+          + setOnPairResultListener()
+          - PairFriendHelper()
+          - deleteFateSet()
+          - fateUser()
+          - loveUser()
+          - mapComperTo()
+          - queryFateSet()
+          - randomUser()
+          - rxJavaParingResult()
+          - soulUser()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      interface com.jue.framework.helper.PairFriendHelper.OnPairResultListener {
+          {abstract} + OnPairFailListener()
+          {abstract} + OnPairListener()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      interface com.jue.framework.helper.PairFriendHelper.OnRxJavaResultListener {
+          {abstract} + rxJavaResult()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      class com.jue.framework.helper.UpdateHelper {
+          - mContext : Context
+          - mProgressDialog : ProgressDialog
+          - tv_cancel : TextView
+          - tv_confirm : TextView
+          - tv_desc : TextView
+          + UpdateHelper()
+          + installApk()
+          + updateApp()
+          - createUpdateDialog()
+          - downloadApk()
+          - initProgress()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      interface com.jue.framework.helper.UpdateHelper.OnUpdateAppListener {
+          {abstract} + OnUpdate()
+      }
+    }
+  }
+  
+
+  namespace com.jue.framework {
+    namespace helper {
+      class com.jue.framework.helper.WindowHelper {
+          - lp : LayoutParams
+          - mContext : Context
+          - mHandler : Handler
+          {static} - mInstance : WindowHelper
+          - wm : WindowManager
+          + createLayoutParams()
+          {static} + getInstance()
+          + getView()
+          + hideView()
+          + initWindow()
+          + showView()
+          + showView()
+          + updateView()
+          - WindowHelper()
+      }
+    }
+  }
+  
+
+  com.jue.framework.helper.GlideHelper +-down- com.jue.framework.helper.GlideHelper.OnGlideBitmapResultListener
+  com.jue.framework.helper.PairFriendHelper o-- com.jue.framework.bmob.IMUser : meIMUser
+  com.jue.framework.helper.PairFriendHelper o-- com.jue.framework.helper.PairFriendHelper.OnPairResultListener : onPairResultListener
+  com.jue.framework.helper.PairFriendHelper +-down- com.jue.framework.helper.PairFriendHelper.OnPairResultListener
+  com.jue.framework.helper.PairFriendHelper +-down- com.jue.framework.helper.PairFriendHelper.OnRxJavaResultListener
+  com.jue.framework.helper.UpdateHelper o-- com.jue.framework.view.DialogView : mUpdateView
+  com.jue.framework.helper.UpdateHelper +-down- com.jue.framework.helper.UpdateHelper.OnUpdateAppListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

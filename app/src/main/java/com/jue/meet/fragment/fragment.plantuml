@@ -1,0 +1,154 @@
+@startuml
+
+title __FRAGMENT's Class Diagram__\n
+
+  namespace com.jue.meet {
+    namespace fragment {
+      class com.jue.meet.fragment.ChatFragment {
+          - mFragmentList : List<Fragment>
+          - mTabLayout : TabLayout
+          - mTitle : String[]
+          - mViewPager : ViewPager
+          + onCreateView()
+          - defTabStyle()
+          - initView()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace fragment {
+      class com.jue.meet.fragment.ChatFragment.ChatPagerAdapter {
+          + ChatPagerAdapter()
+          + destroyItem()
+          + getCount()
+          + getItem()
+          + getPageTitle()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace fragment {
+      class com.jue.meet.fragment.MeFragment {
+          - iv_me_photo : CircleImageView
+          - ll_me_info : LinearLayout
+          - ll_new_friend : LinearLayout
+          - ll_private_set : LinearLayout
+          - ll_setting : LinearLayout
+          - ll_share : LinearLayout
+          - tv_nickname : TextView
+          - tv_server_status : TextView
+          + onClick()
+          + onCreateView()
+          + onMessageEvent()
+          - initView()
+          - loadMeInfo()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace fragment {
+      class com.jue.meet.fragment.SquareFragment {
+          {static} - REQUEST_CODE : int
+          {static} - UPDATE_POS : int
+          - dateFormat : SimpleDateFormat
+          - fb_squaue_top : FloatingActionButton
+          - isDrag : boolean
+          - isMove : boolean
+          - isMusicPlay : boolean
+          - item_empty_view : View
+          - iv_music_photo : ImageView
+          - iv_push : ImageView
+          - lpMusicParams : LayoutParams
+          - mHandler : Handler
+          - mLastX : int
+          - mLastY : int
+          - mList : List<SquareSet>
+          - mSquareAdapter : CommonAdapter<SquareSet>
+          - mSquareSwipeLayout : SwipeRefreshLayout
+          - mSquareView : RecyclerView
+          - musicWindowView : View
+          - objAnimMusic : ObjectAnimator
+          - pb_music_pos : ProgressBar
+          - tv_music_all : TextView
+          - tv_music_cur : TextView
+          + onActivityResult()
+          + onClick()
+          + onCreateView()
+          + onHiddenChanged()
+          + onRefresh()
+          - goneItemView()
+          - hideMusicWindow()
+          - initMusicWindow()
+          - initView()
+          - loadSquare()
+          - showMusicWindow()
+      }
+    }
+  }
+  
+
+  namespace com.jue.meet {
+    namespace fragment {
+      class com.jue.meet.fragment.StarFragment {
+          {static} - REQUEST_CODE : int
+          - iv_add : ImageView
+          - iv_camera : ImageView
+          - ll_fate : LinearLayout
+          - ll_love : LinearLayout
+          - ll_random : LinearLayout
+          - ll_soul : LinearLayout
+          - mAllUserList : List<IMUser>
+          - mCloudView : TagCloudView
+          - mStarList : List<StarModel>
+          - tv_connect_status : TextView
+          - tv_null_cancel : TextView
+          - tv_null_text : TextView
+          - tv_star_title : TextView
+          + onActivityResult()
+          + onClick()
+          + onCreateView()
+          + onDestroy()
+          + onMessageEvent()
+          - initView()
+          - loadStarUser()
+          - pairUser()
+          - saveStarUser()
+          - startUserInfo()
+      }
+    }
+  }
+  
+
+  com.jue.meet.fragment.ChatFragment -up-|> com.jue.framework.base.BaseFragment
+  com.jue.meet.fragment.ChatFragment o-- com.jue.meet.fragment.chat.AllFriendFragment : mAllFriendFragment
+  com.jue.meet.fragment.ChatFragment o-- com.jue.meet.fragment.chat.CallRecordFragment : mCallRecordFragment
+  com.jue.meet.fragment.ChatFragment o-- com.jue.meet.fragment.chat.ChatRecordFragment : mChatRecordFragment
+  com.jue.meet.fragment.ChatFragment +-down- com.jue.meet.fragment.ChatFragment.ChatPagerAdapter
+  com.jue.meet.fragment.ChatFragment.ChatPagerAdapter -up-|> androidx.fragment.app.FragmentStatePagerAdapter
+  com.jue.meet.fragment.MeFragment .up.|> android.view.View.OnClickListener
+  com.jue.meet.fragment.MeFragment -up-|> com.jue.framework.base.BaseFragment
+  com.jue.meet.fragment.SquareFragment .up.|> android.view.View.OnClickListener
+  com.jue.meet.fragment.SquareFragment .up.|> androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
+  com.jue.meet.fragment.SquareFragment -up-|> com.jue.framework.base.BaseFragment
+  com.jue.meet.fragment.SquareFragment o-- com.jue.framework.manager.MediaPlayerManager : mMusicManager
+  com.jue.meet.fragment.StarFragment .up.|> android.view.View.OnClickListener
+  com.jue.meet.fragment.StarFragment -up-|> com.jue.framework.base.BaseFragment
+  com.jue.meet.fragment.StarFragment o-- com.jue.meet.adapter.CloudTagAdapter : mCloudTagAdapter
+  com.jue.meet.fragment.StarFragment o-- com.jue.framework.view.LodingView : mLodingView
+  com.jue.meet.fragment.StarFragment o-- com.jue.framework.view.DialogView : mNullDialogView
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
